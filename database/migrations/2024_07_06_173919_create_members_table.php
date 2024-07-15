@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address');
             $table->enum('service', ['fitness', 'sauna', 'cardio']);
             $table->decimal('total_amount', 8, 2);
+            $table->boolean('expired')->default(false)->after('plan');
             $table->timestamps();
         });
     }

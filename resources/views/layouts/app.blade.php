@@ -203,6 +203,25 @@
                             </a>
                         </li> --}}
 
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/members/status') }}" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    Members Status
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/members/payment') }}" class="nav-link">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>
+                                    Payment
+                                </p>
+                            </a>
+                        </li>
+
+
+
                         <!-- Equipment Management -->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -232,7 +251,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-tie"></i>
                                 <p>
-                                    Trainers
+                                    Staff
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -240,7 +259,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/staff" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Trainer List</p>
+                                        <p>Staff List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

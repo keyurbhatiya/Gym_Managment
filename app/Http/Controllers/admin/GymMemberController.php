@@ -80,6 +80,14 @@ class GymMemberController extends Controller
         return redirect()->route('members.list')->with('success', 'Member details updated successfully.');
     }
 
+    //member status
+
+    public function showStatus()
+    {
+        $members = Member::paginate(10);
+        return view('admin.members-status', compact('members'));
+    }
+
     public function destroy($id)
     {
         $member = Member::findOrFail($id);
@@ -152,4 +160,61 @@ class GymMemberController extends Controller
 
         return redirect()->route('equipment.list')->with('success', 'Equipment deleted successfully.');
     }
+
+    //payment
+    public function showPaymentList()
+    {
+        $members = Member::all();
+        return view('admin.members_payment_list', compact('members'));
+    }
+
+
+    public function showPaymentForm($id)
+    {
+        $member = Member::findOrFail($id);
+        return view('admin.payment_form', compact('member'));
+    }
+
+    public function processPayment(Request $request, $id)
+    {
+        $member = Member::findOrFail($id);
+
+        $request->validate([
+            'amount' => 'required|numeric',
+            'plan' => 'required|in:one_month,three_months,six_months,one_year',
+            'service' => 'required|in:fitness,sauna,cardio',
+        ]);
+
+        // Calculate total amount based on selected plan
+        $services = [
+            'fitness' => 550,
+            'sauna' => 350,
+            'cardio' => 400,
+        ];
+
+        $plans = [
+            'one_month' => 1,
+            'three_months' => 3,
+            'six_months' => 6,
+            'one_year' => 12,
+        ];
+
+        $amount = $services[$request->service];
+        $planMonths = $plans[$request->plan];
+        $total_amount = $amount * $planMonths;
+
+        // Update member record with payment details
+        $member->update([
+            'amount' => $amount,
+            'plan' => $request->plan,
+            'service' => $request->service,
+            'total_amount' => $total_amount,
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('members.paymentList')->with('success', 'Payment processed successfully');
+    }
+
+
+
 }

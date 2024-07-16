@@ -25,4 +25,8 @@ class Member extends Model
     protected $hidden = [
         'password',
     ];
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class, 'user_id');
+    }
 }

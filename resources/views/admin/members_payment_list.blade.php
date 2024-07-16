@@ -6,7 +6,7 @@
 @section('content')
 <div class="container mt-5">
     <h2 class="text-center">Registered Member's Payment</h2>
-    <table class="table table-bordered status-table mt-3">
+    <table class="table table-bordered table-hover status-table mt-3">
         <thead>
             <tr>
                 <th>#</th>

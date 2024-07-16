@@ -17,10 +17,10 @@
 @section('content')
     <div class="container mt-5">
         <h2 class="text-center">Member's Current Status</h2>
-        <table class="table table-bordered status-table mt-3">
+        <table class="table table-bordered  table-hover status-table mt-3">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>No</th>
                     <th>Fullname</th>
                     <th>Contact Number</th>
                     <th>Chosen Service</th>

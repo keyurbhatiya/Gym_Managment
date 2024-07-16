@@ -16,7 +16,7 @@
             <a href="{{ route('staff.entry.form') }}" class="btn btn-primary float-right">Add Staff Members</a>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>#</th>

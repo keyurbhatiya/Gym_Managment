@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\GymMemberController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\AttendanceController;
+use App\Http\Controllers\admin\ReportController;
 
 // Home route
 Route::get('/', function () {
@@ -76,8 +77,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Attendance routes
     Route::prefix('attendance')->group(function () {
-        Route::get('/', [AttendanceController::class, 'index'])->name('attendance.index');
+        Route::get('/list', [AttendanceController::class, 'index'])->name('attendance.index');
+        Route::get('/show', [AttendanceController::class, 'show'])->name('attendance.show');
         Route::get('/check-in/{id}', [AttendanceController::class, 'checkIn'])->name('attendance.checkIn');
         Route::get('/check-out/{id}', [AttendanceController::class, 'checkOut'])->name('attendance.checkOut');
     });
+
+    // Route to display the reports
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 });
+
+
+

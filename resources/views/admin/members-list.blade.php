@@ -26,10 +26,10 @@
 @endif
 
 <div class="container">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
-                <th>#</th>
+                <th>No</th>
                 <th>Full Name</th>
                 <th>Username</th>
                 <th>Gender</th>

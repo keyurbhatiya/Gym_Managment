@@ -11,15 +11,27 @@ use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
+    // public function index()
+    // {
+    //     //echo'<h1>hello</h1>';
+    //     $current_date = Carbon::now()->format('Y-m-d');
+    //     $members = Member::where('status', 'Active')->get();
+
+    //     return view('admin.attendance', compact('members', 'current_date'));
+    // }
+    //admin\attendance.blade.php
+
+
     public function index()
     {
-        //echo'<h1>hello</h1>';
         $current_date = Carbon::now()->format('Y-m-d');
-        $members = Member::where('status', 'Active')->get();
+        // Fetch members with their attendance count
+        $members = Member::where('status', 'Active')
+            ->withCount('attendance')
+            ->get();
 
         return view('admin.attendance', compact('members', 'current_date'));
     }
-    //admin\attendance.blade.php
 
     public function checkIn($id)
     {
@@ -41,5 +53,17 @@ class AttendanceController extends Controller
         Attendance::where('user_id', $id)->where('curr_date', $current_date)->delete();
 
         return redirect()->route('attendance.index');
+    }
+
+    public function show()
+    {
+        $current_date = Carbon::now()->format('Y-m-d');
+
+        // Fetch members with their attendance count
+        $members = Member::where('status', 'Active')
+            ->withCount('attendance')
+            ->get();
+
+        return view('admin.attendance-view', compact('members', 'current_date'));
     }
 }

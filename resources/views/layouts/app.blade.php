@@ -96,7 +96,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ url('home') }}" class="brand-link">
+            <a href="{{ route('home') }}" class="brand-link">
                 <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Gym Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">GYM</span>
             </a>
@@ -131,14 +131,14 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Dashboard -->
                         <li class="nav-item menu-open">
-                            <a href="/admin/dashboard" class="nav-link active">
+                            <a href="{{route('dashboard')}}" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
                         <!-- Member Management -->
                         <li class="nav-item">
-                            <a href="{{ url('admin/members/list') }}" class="nav-link">
+                            <a href="{{route('members.list')}}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Member Management
@@ -147,19 +147,19 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/members/list') }}" class="nav-link">
+                                    <a href="{{route('members.list')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List All Members</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('admin/members') }}" class="nav-link">
+                                    <a href="{{ route('members.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Member Entry Form</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('admin/memberupdate')}}" class="nav-link">
+                                    <a href="{{ route('members.update-details')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Update Member Details</p>
                                     </a>
@@ -204,7 +204,7 @@
                         </li> --}}
 
                         <li class="nav-item">
-                            <a href="{{ url('/admin/members/status') }}" class="nav-link">
+                            <a href="{{ route('members.status') }}" class="nav-link">
                                 <i class="nav-icon fas fa-calendar-alt"></i>
                                 <p>
                                     Members Status
@@ -212,7 +212,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/admin/members/payment') }}" class="nav-link">
+                            <a href="{{ route('members.paymentList') }}" class="nav-link">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
                                     Payment
@@ -233,13 +233,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{url('equipment/list')}}" class="nav-link">
+                                    <a href="{{ route('equipment.list')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Equipment-List</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{url('equipment')}}" class="nav-link">
+                                    <a href="{{ route('equipment.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Equipments-add</p>
                                     </a>
@@ -257,7 +257,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/admin/staff" class="nav-link">
+                                    <a href="{{ route('staff.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Staff List</p>
                                     </a>
@@ -287,12 +287,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('attendance.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Class Attendance</p>
                                     </a>
                                 </li>
                             </ul>
+
                         </li>
                         <!-- Settings -->
                         <li class="nav-item">

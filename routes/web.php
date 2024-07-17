@@ -85,6 +85,17 @@ Route::middleware(['auth'])->group(function () {
 
     // Route to display the reports
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+
+
+    //check in
+
+    Route::post('/attendance/check-all', [AttendanceController::class, 'checkAll'])->name('attendance.checkAll');
+
+    // routes/web.php
+    Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile');
+    Route::get('/admin/change-password', [AdminController::class, 'showChangePasswordForm'])->name('admin.change-password');
+    Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change-password.update');
+
 });
 
 

@@ -1,17 +1,17 @@
 @extends('layouts.app')
-
+@section('title', 'Report')
 @section('head')
     <!-- Add this to your head section -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .chart-container {
-            width: 100%;
-            max-width: 600px; /* Adjust the max-width as needed */
+            width: 10%;
+            max-width: 10px; /* Adjust the max-width as needed */
             margin: 0 auto;
         }
         canvas {
             width: 50% !important;
-            height: 100px !important; /* Adjust the height as needed */
+            height: 50px !important; /* Adjust the height as needed */
         }
     </style>
 @endsection

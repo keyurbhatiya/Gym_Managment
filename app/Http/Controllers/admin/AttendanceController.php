@@ -66,4 +66,32 @@ class AttendanceController extends Controller
 
         return view('admin.attendance-view', compact('members', 'current_date'));
     }
+    //check in
+    public function checkAll(Request $request)
+    {
+        $current_date = Carbon::today()->toDateString();
+        $current_time = Carbon::now()->toTimeString();
+        $members = Member::all();
+
+        foreach ($members as $member) {
+            $attendance = Attendance::where('curr_date', $current_date)
+                                     ->where('user_id', $member->id)
+                                     ->first();
+            if ($attendance) {
+                // Check out: update the curr_time to the current time
+                $attendance->update([
+                    'curr_time' => $current_time,
+                ]);
+            } else {
+                // Check in: create a new attendance record
+                Attendance::create([
+                    'user_id' => $member->id,
+                    'curr_date' => $current_date,
+                    'curr_time' => $current_time,
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('status', 'Attendance updated for all members.');
+    }
 }

@@ -25,6 +25,7 @@
             <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Change Password</button>
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
     </form>
 </div>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\GymMemberController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 // Home route
 Route::get('/', function () {
@@ -20,6 +21,16 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+//forget passowrd
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 
 
 // // Home route

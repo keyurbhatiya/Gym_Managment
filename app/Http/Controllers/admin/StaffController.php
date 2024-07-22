@@ -13,14 +13,14 @@ class StaffController extends Controller
         // Fetch all staff members
         $staffs = Staff::all();
 
-        return view('admin.staff', compact('staffs'));
+        return view('admin.staffs.staff', compact('staffs'));
     }
 
     //staff entry
 
     public function showForm()
     {
-        return view('admin.staff-entry');
+        return view('admin.staffs.staff-entry');
         // resources\views\admin\staff-entry.blade.php
     }
 
@@ -65,7 +65,7 @@ class StaffController extends Controller
 
     public function edit(Staff $staff)
     {
-        return view('admin.staff-edit', compact('staff'));
+        return view('admin.staffs.staff-edit', compact('staff'));
     }
 
     //staff update

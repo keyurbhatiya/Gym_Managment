@@ -30,7 +30,7 @@ class AttendanceController extends Controller
             ->withCount('attendance')
             ->get();
 
-        return view('admin.attendance', compact('members', 'current_date'));
+        return view('admin.attendance.attendance', compact('members', 'current_date'));
     }
 
     public function checkIn($id)
@@ -64,7 +64,7 @@ class AttendanceController extends Controller
             ->withCount('attendance')
             ->get();
 
-        return view('admin.attendance-view', compact('members', 'current_date'));
+        return view('admin.attendance.attendance-view', compact('members', 'current_date'));
     }
     //check in
     public function checkAll(Request $request)

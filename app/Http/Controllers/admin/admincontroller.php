@@ -17,12 +17,12 @@ class admincontroller extends Controller
     public function showProfile()
     {
         $admin = Auth::user();
-        return view('admin.profile', compact('admin'));
+        return view('admin.Profile.profile', compact('admin'));
     }
 
     public function showChangePasswordForm()
     {
-        return view('admin.change-password');
+        return view('admin.Profile.change-password');
     }
 
     public function changePassword(Request $request)

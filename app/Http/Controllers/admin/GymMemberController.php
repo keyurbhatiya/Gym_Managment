@@ -9,9 +9,10 @@ use App\Models\Equipment;
 
 class GymMemberController extends Controller
 {
+    //members
     public function index()
     {
-        return view('admin.member-entry-form');
+        return view('admin.members.member-entry-form');
     }
 
     public function store(Request $request)
@@ -39,19 +40,19 @@ class GymMemberController extends Controller
     public function list()
     {
         $members = Member::all();
-        return view('admin.members-list', compact('members'));
+        return view('admin.members.members-list', compact('members'));
     }
 
     public function updatemembers()
     {
         $members = Member::all();
-        return view('admin.update-member-details', compact('members'));
+        return view('admin.members.update-member-details', compact('members'));
     }
 
     public function edit($id)
     {
         $member = Member::findOrFail($id);
-        return view('admin.members-edit', compact('member'));
+        return view('admin.members.members-edit', compact('member'));
     }
 
     public function update(Request $request, $id)
@@ -85,7 +86,7 @@ class GymMemberController extends Controller
     public function showStatus()
     {
         $members = Member::paginate(10);
-        return view('admin.members-status', compact('members'));
+        return view('admin.members.members-status', compact('members'));
     }
 
     public function destroy($id)
@@ -93,14 +94,28 @@ class GymMemberController extends Controller
         $member = Member::findOrFail($id);
         $member->delete();
 
-        return redirect()->route('members.list')->with('success', 'Member deleted successfully.');
+        return redirect()->route('members.members.list')->with('success', 'Member deleted successfully.');
     }
+
+//Payment
+     public function showPaymentList()
+     {
+         $members = Member::all();
+         return view('admin.payments.members_payment_list', compact('members'));
+     }
+
+     public function showPaymentForm($id)
+     {
+         $member = Member::findOrFail($id);
+         return view('admin.payments.payment_form', compact('member'));
+     }
+
 
     // Equipment functions
 
     public function equipmentIndex()
     {
-        return view('admin.equipment-entry-form');
+        return view('admin.equipments.equipment-entry-form');
     }
 
     public function equipmentStore(Request $request)
@@ -124,13 +139,13 @@ class GymMemberController extends Controller
     public function equipmentList()
     {
         $equipment = Equipment::all();
-        return view('admin.equipment-list', compact('equipment'));
+        return view('admin.equipments.equipment-list', compact('equipment'));
     }
 
     public function equipmentEdit($id)
     {
         $equipment = Equipment::findOrFail($id);
-        return view('admin.equipment-edit', compact('equipment'));
+        return view('admin.equipments.equipment-edit', compact('equipment'));
     }
 
     public function equipmentUpdate(Request $request, $id)
@@ -161,19 +176,9 @@ class GymMemberController extends Controller
         return redirect()->route('equipment.list')->with('success', 'Equipment deleted successfully.');
     }
 
-    //payment
-    public function showPaymentList()
-    {
-        $members = Member::all();
-        return view('admin.members_payment_list', compact('members'));
-    }
 
 
-    public function showPaymentForm($id)
-    {
-        $member = Member::findOrFail($id);
-        return view('admin.payment_form', compact('member'));
-    }
+
 
     public function processPayment(Request $request, $id)
     {

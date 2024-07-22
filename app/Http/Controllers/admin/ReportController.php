@@ -24,6 +24,6 @@ class ReportController extends Controller
             'Sauna' => 4 // Replace with your logic
         ];
 
-        return view('admin.reports', compact('earnings', 'expenses', 'maleCount', 'femaleCount', 'serviceCounts'));
+        return view('admin.reports.reports', compact('earnings', 'expenses', 'maleCount', 'femaleCount', 'serviceCounts'));
     }
 }

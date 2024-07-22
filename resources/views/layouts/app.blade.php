@@ -96,7 +96,6 @@
                     </div>
                 </div>
 
-
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
@@ -226,9 +225,7 @@
                                     </a>
                                 </li>
                             </ul>
-
                         </li>
-
 
                         <!-- Equipment Management -->
                         <li class="nav-item">
@@ -288,20 +285,7 @@
                                         <p>Membership Reports</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('attendance.index') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Class Attendance</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('attendance.show') }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>View Attendance</p>
-                                    </a>
-                                </li>
                             </ul>
-
                         </li>
                         <!-- Settings -->
                         <li class="nav-item">
@@ -353,5 +337,4 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
-
 </html>

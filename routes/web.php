@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\admin\PaymentController;
+use App\Http\Controllers\admin\EquipmentController;
 
 // Home route
 Route::get('/', function () {
@@ -58,21 +60,21 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/status', [GymMemberController::class, 'showStatus'])->name('members.status');
         Route::delete('/{id}', [GymMemberController::class, 'destroy'])->name('members.destroy');
 
-    //Payment
-        Route::get('/{id}/payment', [GymMemberController::class, 'showPaymentForm'])->name('members.showPaymentForm');
-        Route::post('/{id}/payment', [GymMemberController::class, 'makePayment'])->name('members.makePayment');
-        Route::put('/{id}/payment', [GymMemberController::class, 'processPayment'])->name('members.processPayment');
-        Route::get('/payment', [GymMemberController::class, 'showPaymentList'])->name('members.paymentList');
+        //Payment
+        Route::get('/{id}/payment', [PaymentController::class, 'showPaymentForm'])->name('members.showPaymentForm');
+        Route::post('/{id}/payment', [PaymentController::class, 'makePayment'])->name('members.makePayment');
+        Route::put('/{id}/payment', [PaymentController::class, 'processPayment'])->name('members.processPayment');
+        Route::get('/payment', [PaymentController::class, 'showPaymentList'])->name('members.paymentList');
     });
 
     // Equipment routes
     Route::prefix('equipment')->group(function () {
-        Route::get('/', [GymMemberController::class, 'equipmentIndex'])->name('equipment.index');
-        Route::post('/', [GymMemberController::class, 'equipmentStore'])->name('equipment.store');
-        Route::get('/list', [GymMemberController::class, 'equipmentList'])->name('equipment.list');
-        Route::get('/{id}/edit', [GymMemberController::class, 'equipmentEdit'])->name('equipment.edit');
-        Route::put('/{id}', [GymMemberController::class, 'equipmentUpdate'])->name('equipment.update');
-        Route::delete('/{id}', [GymMemberController::class, 'equipmentDestroy'])->name('equipment.destroy');
+        Route::get('/', [EquipmentController::class, 'equipmentIndex'])->name('equipment.index');
+        Route::post('/', [EquipmentController::class, 'equipmentStore'])->name('equipment.store');
+        Route::get('/list', [EquipmentController::class, 'equipmentList'])->name('equipment.list');
+        Route::get('/{id}/edit', [EquipmentController::class, 'equipmentEdit'])->name('equipment.edit');
+        Route::put('/{id}', [EquipmentController::class, 'equipmentUpdate'])->name('equipment.update');
+        Route::delete('/{id}', [EquipmentController::class, 'equipmentDestroy'])->name('equipment.destroy');
     });
 
     // Staff routes
@@ -91,20 +93,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/show', [AttendanceController::class, 'show'])->name('attendance.show');
         Route::get('/check-in/{id}', [AttendanceController::class, 'checkIn'])->name('attendance.checkIn');
         Route::get('/check-out/{id}', [AttendanceController::class, 'checkOut'])->name('attendance.checkOut');
+        //check in
+        Route::post('/check-all', [AttendanceController::class, 'checkAll'])->name('attendance.checkAll');
     });
-
-    // Route to display the reports
-    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
-
-
-    //check in
-    Route::post('/attendance/check-all', [AttendanceController::class, 'checkAll'])->name('attendance.checkAll');
 
     // routes/web.php
     Route::get('/admin/profile', [AdminController::class, 'showProfile'])->name('admin.profile');
     Route::get('/admin/change-password', [AdminController::class, 'showChangePasswordForm'])->name('admin.change-password');
     Route::post('/admin/change-password', [AdminController::class, 'changePassword'])->name('admin.change-password.update');
 
+
+    // Route to display the reports
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
 });
 
 

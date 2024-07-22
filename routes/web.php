@@ -24,11 +24,8 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 //forget passowrd
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
@@ -60,6 +57,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/memberupdate', [GymMemberController::class, 'updatemembers'])->name('members.update-details');
         Route::get('/status', [GymMemberController::class, 'showStatus'])->name('members.status');
         Route::delete('/{id}', [GymMemberController::class, 'destroy'])->name('members.destroy');
+
+    //Payment
         Route::get('/{id}/payment', [GymMemberController::class, 'showPaymentForm'])->name('members.showPaymentForm');
         Route::post('/{id}/payment', [GymMemberController::class, 'makePayment'])->name('members.makePayment');
         Route::put('/{id}/payment', [GymMemberController::class, 'processPayment'])->name('members.processPayment');
@@ -99,7 +98,6 @@ Route::middleware(['auth'])->group(function () {
 
 
     //check in
-
     Route::post('/attendance/check-all', [AttendanceController::class, 'checkAll'])->name('attendance.checkAll');
 
     // routes/web.php

@@ -110,4 +110,18 @@ class StaffController extends Controller
         $staff->delete();
         return redirect()->route('staff.index')->with('success', 'Staff member deleted successfully.');
     }
+
+    // public function showTrainers()
+    // {
+    //     $trainers = Staff::all(); // Fetch all staff members
+    //     dd($trainers);
+    //     return view('home', compact('trainers'));
+    // }
+
+    public function showTrainers()
+    {
+       // echo'<h1>dsdFrf</h1>';
+        $trainers = Staff::all(); // Fetch all staff members
+        return view('home', compact('trainers')); // Pass the data to the home view
+    }
 }

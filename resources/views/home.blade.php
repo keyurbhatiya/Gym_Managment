@@ -489,6 +489,52 @@
             </div>
         </div>
     </section>
+
+
+   <!-- Other content of your home.blade.php -->
+
+   {{-- <section class="section" id="trainers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-heading">
+                    <h2>Expert <em>Trainers</em></h2>
+                    <img src="{{ asset('assets/images/line-dec.png') }}" alt="">
+                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor,
+                        ultricies fermentum massa consequat eu.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($trainers as $trainer)
+                <div class="col-lg-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src="{{ asset('assets/images/first-trainer.jpg') }}" alt="{{ $trainer->firstname }} {{ $trainer->lastname }}">
+                            <!-- Replace 'first-trainer.jpg' with actual image field if available in the database -->
+                        </div>
+                        <div class="down-content">
+                            <span>{{ $trainer->designation }}</span>
+                            <h4>{{ $trainer->firstname }} {{ $trainer->lastname }}</h4>
+                            <p>{{ $trainer->address }}</p> <!-- Or any other description field -->
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section> --}}
+
+<!-- Other content of your home.blade.php -->
+
+
+
     <!-- ***** Testimonials Ends ***** -->
 
     <!-- ***** Contact Us Area Starts ***** -->
